@@ -12,6 +12,7 @@
   --color-bg-secondary: #f5f5f5;
   --color-custom-dark: #222222;
   --color-custom-gray: #ddd;
+  --color-custom-dark-gray: #666;
 }
 
 @theme inline {

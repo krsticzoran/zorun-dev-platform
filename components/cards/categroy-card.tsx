@@ -64,7 +64,7 @@ export function CategoryCard({
         >
           {post.title}
         </TitleTag>
-        <p className="leading-[22px] text-[#666] font-medium line-clamp-3 sm:line-clamp-2">
+        <p className="leading-[22px] text-custom-dark-gray font-medium line-clamp-3 sm:line-clamp-2">
           {post.description}
         </p>
       </div>
