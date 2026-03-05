@@ -2,11 +2,13 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { CategoryCard } from "@/components/cards/categroy-card";
 import { PaginationNav } from "@/components/ui/pagination-nav";
+import { Post } from "@/type/post";
+import { CategoryData } from "@/type/category-data";
 
 interface CategoryPageLayoutProps {
-  categoryMeta: any;
-  featuredPost: any;
-  gridPosts: any[];
+  categoryMeta: CategoryData;
+  featuredPost: Post;
+  gridPosts: Post[];
   category: string;
   currentPage: number;
   totalPages: number;
