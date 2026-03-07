@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Header from "@/components/layout/header/header";
 import { Footer } from "@/components/layout/footer/footer";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,7 +69,7 @@ export default function RootLayout({
         className={`${inter.variable} ${familjenGrotesk.variable} ${instrumentSerif.variable} antialiased`}
       >
         <Header />
-        {children}
+        <NuqsAdapter>{children}</NuqsAdapter>
         <Analytics />
         <Footer />
       </body>
