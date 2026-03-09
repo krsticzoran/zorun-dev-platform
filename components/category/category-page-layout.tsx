@@ -3,7 +3,7 @@ import { Container } from "@/components/layout/container";
 import { Post } from "@/type/post";
 import { CategoryData } from "@/type/category-data";
 import { CategoryFilter } from "@/components/category/category-filter";
-import { CategoryPostsGrid } from "@/components/category/category-posts-grid";
+import { CategoryPostsGrid } from "./category-posts-grid";
 import { Suspense } from "react";
 
 interface CategoryPageLayoutProps {
@@ -63,15 +63,12 @@ export async function CategoryPageLayout({
           <CategoryFilter
             tags={categoryMeta.tags}
             categoryPosts={categoryPosts}
-          >
-            <CategoryPostsGrid
-              featuredPost={featuredPost}
-              gridPosts={gridPosts}
-              category={category}
-              currentPage={currentPage}
-              totalPages={totalPages}
-            />
-          </CategoryFilter>
+            featuredPost={featuredPost}
+            gridPosts={gridPosts}
+            category={category}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
         </Suspense>
       </Container>
     </main>

@@ -4,17 +4,26 @@ import { useQueryState } from "nuqs";
 import { Post } from "@/type/post";
 import { Container } from "@/components/layout/container";
 import { CategoryCard } from "@/components/cards/categroy-card";
+import { CategoryPostsGrid } from "./category-posts-grid";
 
 interface CategoryFilterProps {
   tags: Tag[];
   categoryPosts: Post[];
-  children: React.ReactNode;
+  featuredPost: Post;
+  gridPosts: Post[];
+  category: string;
+  currentPage: number;
+  totalPages: number;
 }
 
 export function CategoryFilter({
   tags,
   categoryPosts,
-  children,
+  featuredPost,
+  gridPosts,
+  category,
+  currentPage,
+  totalPages,
 }: CategoryFilterProps) {
   const validTags = Object.keys(TAGS) as Tag[];
 
@@ -24,7 +33,16 @@ export function CategoryFilter({
       validTags.includes(value as Tag) ? (value as Tag) : null,
   });
 
-  if (!tags || tags.length === 0) return children;
+  if (!tags || tags.length === 0)
+    return (
+      <CategoryPostsGrid
+        featuredPost={featuredPost}
+        gridPosts={gridPosts}
+        category={category}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+    );
 
   const filteredPosts = tag
     ? categoryPosts
@@ -60,7 +78,13 @@ export function CategoryFilter({
           </div>
         </Container>
       ) : (
-        children
+        <CategoryPostsGrid
+          featuredPost={featuredPost}
+          gridPosts={gridPosts}
+          category={category}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
       )}
     </>
   );
