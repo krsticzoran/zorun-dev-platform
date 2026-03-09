@@ -49,17 +49,7 @@ export async function CategoryPageLayout({
         <h1 className="text-black max-w-[1000px] capitalize mb-10 xl:mb-14">
           {categoryMeta.excerpt}
         </h1>
-        <Suspense
-          fallback={
-            <CategoryPostsGrid
-              featuredPost={featuredPost}
-              gridPosts={gridPosts}
-              category={category}
-              currentPage={currentPage}
-              totalPages={totalPages}
-            />
-          }
-        >
+        <Suspense fallback={null}>
           <CategoryFilter
             tags={categoryMeta.tags}
             categoryPosts={categoryPosts}

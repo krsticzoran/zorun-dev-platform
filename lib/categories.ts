@@ -29,7 +29,7 @@ export const categoriesData: Record<
     alt: "mnoštvo trkača na Berlin maratonu",
     excerpt: "Trčiš bez plana? Nauči kako da trčiš duže i brže",
     ctaText: "Istraži treninge",
-    tags: ["pocetnici", "napredni"],
+    tags: [],
   },
   zdravlje: {
     title: "Oporavak & Ishrana",
