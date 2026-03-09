@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
-import { CategoryCard } from "@/components/cards/categroy-card";
-import { PaginationNav } from "@/components/ui/pagination-nav";
 import { Post } from "@/type/post";
 import { CategoryData } from "@/type/category-data";
 import { CategoryFilter } from "@/components/category/category-filter";
+import { CategoryPostsGrid } from "@/components/category/category-posts-grid";
 
 interface CategoryPageLayoutProps {
   categoryMeta: CategoryData;
@@ -16,7 +15,7 @@ interface CategoryPageLayoutProps {
   categoryPosts: Post[];
 }
 
-export function CategoryPageLayout({
+export async function CategoryPageLayout({
   categoryMeta,
   featuredPost,
   gridPosts,
@@ -49,26 +48,16 @@ export function CategoryPageLayout({
         <h1 className="text-black max-w-[1000px] capitalize mb-10 xl:mb-14">
           {categoryMeta.excerpt}
         </h1>
-        <CategoryFilter
-          tags={categoryMeta.tags}
-          categoryPosts={categoryPosts}
-        />
-      </Container>
 
-      <Container className="flex flex-col gap-3">
-        <CategoryCard post={featuredPost} variant="featured" />
-
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
-          {gridPosts.map((post) => (
-            <CategoryCard post={post} key={post.slug} />
-          ))}
-        </div>
-
-        <PaginationNav
-          category={category}
-          currentPage={currentPage}
-          totalPages={totalPages}
-        />
+        <CategoryFilter tags={categoryMeta.tags} categoryPosts={categoryPosts}>
+          <CategoryPostsGrid
+            featuredPost={featuredPost}
+            gridPosts={gridPosts}
+            category={category}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
+        </CategoryFilter>
       </Container>
     </main>
   );

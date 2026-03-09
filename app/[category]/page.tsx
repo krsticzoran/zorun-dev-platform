@@ -3,7 +3,7 @@ import { posts } from "#site/content";
 import { notFound } from "next/navigation";
 import { categoriesData } from "@/lib/categories";
 import { POSTS_PER_PAGE } from "@/lib/constants";
-import { CategoryPageLayout } from "@/components/layout/category/category-page-layout";
+import { CategoryPageLayout } from "@/components/category/category-page-layout";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
