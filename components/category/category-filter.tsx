@@ -70,13 +70,13 @@ export function CategoryFilter({
         ))}
       </div>
       {tag ? (
-        <Container className="flex flex-col gap-3 mt-5">
+        <div className="flex flex-col gap-3 mt-5">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
             {filteredPosts.map((post) => (
               <CategoryCard post={post} key={post.slug} />
             ))}
           </div>
-        </Container>
+        </div>
       ) : (
         <CategoryPostsGrid
           featuredPost={featuredPost}

@@ -19,7 +19,7 @@ export function CategoryPostsGrid({
   totalPages,
 }: CategoryPostsGridProps) {
   return (
-    <Container className="flex flex-col gap-3 mt-5">
+    <div className="flex flex-col gap-3 mt-5">
       <CategoryCard post={featuredPost} variant="featured" />
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
@@ -33,6 +33,6 @@ export function CategoryPostsGrid({
         currentPage={currentPage}
         totalPages={totalPages}
       />
-    </Container>
+    </div>
   );
 }
