@@ -1,5 +1,6 @@
 export const TAGS = {
   pocetnici: "Početnici",
+  rekreativci: "Rekreativci",
   napredni: "Napredni",
   "40plus": "40+",
   "5k": "5K",

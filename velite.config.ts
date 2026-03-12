@@ -35,6 +35,7 @@ export default defineConfig({
             .array(
               s.enum([
                 "pocetnici",
+                "rekreativci",
                 "napredni",
                 "40plus",
                 "5k",
