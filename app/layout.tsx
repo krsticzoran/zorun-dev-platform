@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Familjen_Grotesk, Instrument_Serif } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/layout/header/header";
 import { Footer } from "@/components/layout/footer/footer";
@@ -71,7 +71,9 @@ export default function RootLayout({
         <Header />
         <NuqsAdapter>{children}</NuqsAdapter>
         <Analytics />
-        <Footer />
+        <Suspense>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );

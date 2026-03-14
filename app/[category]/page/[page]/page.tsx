@@ -8,8 +8,6 @@ interface CategoryPageProps {
   params: Promise<{ category: string; page: string }>;
 }
 
-export const dynamicParams = false;
-
 export async function generateStaticParams() {
   const pages: { category: string; page: string }[] = [];
 

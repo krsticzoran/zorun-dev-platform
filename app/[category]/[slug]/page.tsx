@@ -71,6 +71,11 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
+  const categoryPosts = posts
+    .filter((post) => post.category === category && post.slug !== slug)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
+
   return (
     <main className="flex flex-col mx-auto justify-center bg-bg-secondary page-fade">
       <article>

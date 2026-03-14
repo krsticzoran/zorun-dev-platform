@@ -1,7 +1,7 @@
 "use client";
 import { Container } from "../container";
 
-export async function Footer() {
+export function Footer() {
   return (
     <footer className="bg-black ">
       <Container>
