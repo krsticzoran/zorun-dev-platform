@@ -1,18 +1,38 @@
-# Trkačke Priče
+# [ REPO ] : zorun_dev_platform
 
-**Trkačke Priče** is a website dedicated to running. The site will include:
+> **Mission:** Marathon_Sub-3_Protocol [2027] > **Status:** System_Initialization
 
-- A blog with stories and tips about running
-- A section for recommended running gear
-- Tools and features for runners (e.g., pace calculators, training logs)
+A high-performance web engine dedicated to documenting the journey toward a sub-3 hour marathon through data-driven training and system logic.
 
-## Technologies
+---
 
-- **Next.js** with **TypeScript**
-- **Velite** for MDX content management
-- **Supabase** for backend and database
-- **Nuqs** for URL query state management
-- **Tailwind CSS** for styling
-- **Framer Motion** for animations
-- **ShadCN** UI components
-- **Vercel** for hosting
+## // TECH_STACK
+
+- **Framework:** `Next.js 16` (App Router)
+- **Language:** `TypeScript`
+- **Content:** `Velite` (MDX Content Management)
+- **Database:** `Supabase`
+- **State:** `Nuqs` (Type-safe URL state)
+- **Styling:** `Tailwind CSS` + `ShadCN`
+- **Motion:** `Framer Motion`
+- **Hosting:** `Vercel`
+
+---
+
+## // CORE_FEATURES
+
+- **Training Logs:** Systematic documentation of running sessions.
+- **Hardware Reviews:** In-depth analysis of footwear and cinematography tech.
+- **Performance Tools:** Custom-built pace and lactate threshold calculators.
+
+---
+
+## // GETTING_STARTED
+
+```bash
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
