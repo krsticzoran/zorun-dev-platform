@@ -1,18 +1,17 @@
 import { Container } from "../layout/container";
-import Link from "next/link";
 import HomeCard from "../cards/home-card";
 import { useCategoryPosts } from "@/hook/useCategoryPosts";
 import Quote from "./quotes";
 import { SectionHeader } from "../ui/section-header";
 
 export default function HomeTraining() {
-  const equimpmentPosts = useCategoryPosts("oprema");
+  const equimpmentPosts = useCategoryPosts("stack");
 
   return (
     <section className="bg-black py-[100px] xl:py-[120px]">
       <Container className="flex flex-col">
         <SectionHeader
-          slug="oprema"
+          slug="stack"
           bgColor="black"
           btnBorderColor="border-white"
         />

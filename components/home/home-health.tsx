@@ -5,12 +5,12 @@ import { useCategoryPosts } from "@/hook/useCategoryPosts";
 import { SectionHeader } from "../ui/section-header";
 
 export default function HomeHealth() {
-  const trainingPosts = useCategoryPosts("zdravlje", 2);
+  const trainingPosts = useCategoryPosts("logic", 2);
 
   return (
     <section className="bg-white py-[100px] xl:py-[120px]">
       <Container className="flex flex-col">
-        <SectionHeader slug="zdravlje" />
+        <SectionHeader slug="logic" />
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
           {trainingPosts.map((post) => (

@@ -20,31 +20,11 @@ export default defineConfig({
           slug: s.slug("posts"),
           description: s.string().max(999),
           date: s.isodate(),
-          category: s.enum([
-            "trening",
-            "oprema",
-            "simonin-kutak",
-            "iz-sveta-trcanja",
-            "zdravlje",
-            "zajednica",
-          ]),
+          category: s.enum(["logs", "stack", "logic", "mission"]),
           image: s.image(),
           imageAlt: s.string().max(200),
           metadata: s.metadata(),
-          tags: s
-            .array(
-              s.enum([
-                "pocetnici",
-                "rekreativci",
-                "napredni",
-                "40plus",
-                "5k",
-                "10k",
-                "21k",
-                "maraton",
-              ])
-            )
-            .optional(),
+          tags: s.array(s.string()).optional(),
           content: s.mdx(),
           objectPosition: s.enum(["top", "center", "bottom"]).optional(),
         })
