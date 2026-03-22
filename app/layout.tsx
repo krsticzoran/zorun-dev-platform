@@ -27,32 +27,32 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Trkačke priče",
+  title: "zorun.dev // Engineering the Run",
   description:
-    "Od prvih kilometara do ličnih pobeda, iskustva i priče iz sveta trkača.",
+    "A personal journey towards a sub-3 marathon. Exploring the intersection of long-distance running and a disciplined, data-driven mindset.",
   alternates: {
-    canonical: "https://trkackeprice.com",
+    canonical: "https://zorun.dev",
   },
   openGraph: {
-    title: "Trkačke priče",
+    title: "zorun.dev // Engineering the Run",
     description:
-      "Od prvih kilometara do ličnih pobeda, iskustva i priče iz sveta trkača.",
-    url: "https://trkackeprice.com",
+      "A personal journey towards a sub-3 marathon. Exploring the intersection of long-distance running and a disciplined, data-driven mindset.",
+    url: "https://zorun.dev",
     type: "website",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Trkačke priče",
+        alt: "zorun.dev",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trkačke priče",
+    title: "zorun.dev // Engineering the Run",
     description:
-      "Od prvih kilometara do ličnih pobeda, iskustva i priče iz sveta trkača.",
+      "A personal journey towards a sub-3 marathon. Exploring the intersection of long-distance running and a disciplined, data-driven mindset.",
     images: ["/og-image.png"],
   },
 };
