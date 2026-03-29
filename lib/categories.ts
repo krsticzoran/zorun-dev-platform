@@ -21,13 +21,13 @@ export const categoriesData: Record<
   }
 > = {
   mission: {
-    title: "Mission: Sub-3",
+    title: "Sub 3 Journey",
     description:
-      "My journey from a casual runner to a sub-3 hour marathon. A transparent look at progress, races, and the discipline needed to hit a high-performance goal at age 45.",
+      "At 45, starting over is a choice. This is the reality of chasing a sub-3 hour marathon while balancing a professional career and being a father. No filters, just the road to December 2027.",
     image: missionImg,
-    alt: "Roadmap towards the Sub-3 marathon goal",
-    excerpt: "> TARGET: 2:59:59. Documentation of progress and discipline.",
-    ctaText: "View Mission",
+    alt: "The path to a sub-3 hour marathon at 45",
+    excerpt: "The road to a sub-3 hour marathon at 45.",
+    ctaText: "Follow the Journey",
     tags: [],
   },
   logic: {
