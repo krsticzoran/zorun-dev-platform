@@ -1,4 +1,4 @@
-import missionImg from "@/assets/images/categories/iz-sveta-trcanja.webp";
+import missionImg from "@/assets/images/categories/sub3.webp";
 import trainingImg from "@/assets/images/categories/zdravlje.webp";
 import lifestyleImg from "@/assets/images/categories/oprema.webp";
 
