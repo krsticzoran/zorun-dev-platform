@@ -1,5 +1,5 @@
 import missionImg from "@/assets/images/categories/sub3.webp";
-import trainingImg from "@/assets/images/categories/zdravlje.webp";
+import trainingImg from "@/assets/images/categories/image.webp";
 import lifestyleImg from "@/assets/images/categories/oprema.webp";
 
 import { StaticImageData } from "next/image";
@@ -37,6 +37,7 @@ export const categoriesData: Record<
     alt: "A focused runner over 40 maintaining a steady pace",
     excerpt: "Your best miles are still ahead of you. Keep moving forward.",
     ctaText: "Start Training",
+    objectPosition: "top",
     tags: [],
   },
   "beyond-the-miles": {

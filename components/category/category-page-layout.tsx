@@ -48,7 +48,7 @@ export async function CategoryPageLayout({
       </div>
 
       <Container className="pt-16 sm:pt-20 xl:pt-24 mb-5">
-        <h1 className="text-black max-w-[1000px] capitalize mb-10 xl:mb-14">
+        <h1 className="text-black max-w-[1000px] mb-10 xl:mb-14">
           {categoryMeta.excerpt}
         </h1>
 
