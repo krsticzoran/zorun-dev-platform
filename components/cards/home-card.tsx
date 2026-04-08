@@ -1,11 +1,11 @@
 // components/HomeCard.tsx
-import Image from "next/image";
-import Link from "next/link";
-import { Post } from "@/type/post";
+import Image from 'next/image'
+import Link from 'next/link'
+import { Post } from '@/type/post'
 
 interface HomeCardProps {
-  post: Post;
-  priority?: boolean;
+  post: Post
+  priority?: boolean
 }
 
 export default function HomeCard({ post, priority = false }: HomeCardProps) {
@@ -18,6 +18,7 @@ export default function HomeCard({ post, priority = false }: HomeCardProps) {
         src={post.image}
         alt={post.imageAlt}
         fill
+        sizes="(min-width: 768px) calc((min(1300px, 100vw) - 32px) / 3), 100vw"
         priority={priority}
         className="object-cover hover:scale-105 transition-all duration-300"
       />
@@ -25,5 +26,5 @@ export default function HomeCard({ post, priority = false }: HomeCardProps) {
         {post.title}
       </div>
     </Link>
-  );
+  )
 }
