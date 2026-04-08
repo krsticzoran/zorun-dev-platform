@@ -11,7 +11,6 @@ export function MenuVisual() {
         quality={60}
         alt="running race"
         className="object-cover page-fade"
-        priority
       />
       <div className="absolute left-4 top-7 z-50  ">
         <div className="flex gap-2">
