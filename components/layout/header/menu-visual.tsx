@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import headerImage from "@/assets/images/header/race.jpg";
+import headerImage from '@/assets/images/header/race.jpg'
 
 export function MenuVisual() {
   return (
@@ -8,7 +8,7 @@ export function MenuVisual() {
       <Image
         src={headerImage}
         fill
-        quality={60}
+        quality={75}
         alt="running race"
         className="object-cover page-fade"
       />
@@ -21,18 +21,15 @@ export function MenuVisual() {
             Run
           </span>
         </div>
-        <p className="text-white font-medium text-lg  mt-2 ">
-          Stories. Insights. Movement.
-        </p>
+        <p className="text-white font-medium text-lg  mt-2 ">Stories. Insights. Movement.</p>
       </div>
 
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%)",
+          background: 'linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%)',
         }}
       />
     </div>
-  );
+  )
 }
