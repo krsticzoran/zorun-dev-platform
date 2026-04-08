@@ -1,4 +1,3 @@
-// components/HomeCard.tsx
 import Image from 'next/image'
 import Link from 'next/link'
 import { Post } from '@/type/post'

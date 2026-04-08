@@ -1,4 +1,4 @@
-import { socials } from "@/lib/socials";
+import { socials } from "@/components/ui/socials";
 
 export function SocialsIcons() {
   return (
