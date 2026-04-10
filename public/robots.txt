@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Allow: /
 
-Sitemap: https://trkackeprice.com/sitemap.xml
+Sitemap: https://zorun.dev/sitemap.xml

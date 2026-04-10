@@ -1,41 +1,42 @@
-import { posts } from "#site/content";
+import { posts } from '#site/content'
 
-import { notFound } from "next/navigation";
-import { categoriesData } from "@/lib/categories";
-import { POSTS_PER_PAGE } from "@/lib/constants";
-import { CategoryPageLayout } from "@/components/category/category-page-layout";
+import { notFound } from 'next/navigation'
+import { categoriesData } from '@/lib/categories'
+import { POSTS_PER_PAGE } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
+import { CategoryPageLayout } from '@/components/category/category-page-layout'
 
 interface CategoryPageProps {
-  params: Promise<{ category: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: Promise<{ category: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function generateStaticParams() {
   return Object.keys(categoriesData).map((category) => ({
     category,
-  }));
+  }))
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
-  const { category } = await params;
+  const { category } = await params
 
-  const categoryMeta = categoriesData[category];
+  const categoryMeta = categoriesData[category]
 
   if (!categoryMeta) {
-    notFound();
+    notFound()
   }
 
   return {
     title: `Trkačke priče  - ${categoryMeta.title}`,
     description: categoryMeta.description,
     alternates: {
-      canonical: `https://trkackeprice.com/${category}`,
+      canonical: `${SITE_URL}/${category}`,
     },
     openGraph: {
       title: `Trkačke priče  - ${categoryMeta.title}`,
       description: categoryMeta.description,
-      url: `https://trkackeprice.com/${category}`,
-      type: "website",
+      url: `${SITE_URL}/${category}`,
+      type: 'website',
       images: [
         {
           url: categoryMeta.image.src,
@@ -45,31 +46,28 @@ export async function generateMetadata({ params }: CategoryPageProps) {
         },
       ],
     },
-  };
+  }
 }
 
-export default async function CategoryPage({
-  params,
-  searchParams,
-}: CategoryPageProps) {
-  const { category } = await params;
+export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
+  const { category } = await params
 
-  const categoryMeta = categoriesData[category];
+  const categoryMeta = categoriesData[category]
 
   const categoryPosts = posts
     .filter((post) => post.category === category)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   if (!categoryPosts.length) {
-    notFound();
+    notFound()
   }
 
-  const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE)
 
-  const paginatedPosts = categoryPosts.slice(0, POSTS_PER_PAGE);
+  const paginatedPosts = categoryPosts.slice(0, POSTS_PER_PAGE)
 
-  const featuredPost = paginatedPosts[0];
-  const gridPosts = paginatedPosts.slice(1);
+  const featuredPost = paginatedPosts[0]
+  const gridPosts = paginatedPosts.slice(1)
 
   return (
     <CategoryPageLayout
@@ -82,5 +80,5 @@ export default async function CategoryPage({
       categoryPosts={categoryPosts}
       searchParams={searchParams}
     />
-  );
+  )
 }

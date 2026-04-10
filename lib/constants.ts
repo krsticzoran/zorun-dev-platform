@@ -1,1 +1,3 @@
-export const POSTS_PER_PAGE = 7;
+export const POSTS_PER_PAGE = 5
+
+export const SITE_URL = 'https://zorun.dev'

@@ -1,7 +1,7 @@
 import { posts } from '#site/content'
 import { notFound } from 'next/navigation'
 import { categoriesData } from '@/lib/categories'
-import { POSTS_PER_PAGE } from '@/lib/constants'
+import { POSTS_PER_PAGE, SITE_URL } from '@/lib/constants'
 import { CategoryPageLayout } from '@/components/category/category-page-layout'
 
 interface CategoryPageProps {
@@ -24,7 +24,6 @@ export async function generateStaticParams() {
   return pages
 }
 
-
 export async function generateMetadata({ params }: CategoryPageProps) {
   const { category, page } = await params
 
@@ -35,12 +34,12 @@ export async function generateMetadata({ params }: CategoryPageProps) {
     title: `Trkačke priče - ${categoryMeta.title} - Strana ${page}`,
     description: categoryMeta.description,
     alternates: {
-      canonical: `https://trkackeprice.com/${category}/page/${page}`,
+      canonical: `${SITE_URL}/${category}/page/${page}`,
     },
     openGraph: {
       title: `Trkačke priče - ${categoryMeta.title} - Strana ${page}`,
       description: categoryMeta.description,
-      url: `https://trkackeprice.com/${category}/page/${page}`,
+      url: `${SITE_URL}/${category}/page/${page}`,
       type: 'website',
       images: [
         {
