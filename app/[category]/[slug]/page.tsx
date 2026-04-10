@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PostPageProps) {
   const url = `${SITE_URL}/${category}/${slug}`
 
   return {
-    title: `Trkačke priče – ${post.title}`,
+    title: `Zorun – ${post.title}`,
     description: post.description,
 
     alternates: {

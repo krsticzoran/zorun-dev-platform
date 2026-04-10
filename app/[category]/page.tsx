@@ -27,13 +27,13 @@ export async function generateMetadata({ params }: CategoryPageProps) {
   }
 
   return {
-    title: `Trkačke priče  - ${categoryMeta.title}`,
+    title: `Zorun  - ${categoryMeta.title}`,
     description: categoryMeta.description,
     alternates: {
       canonical: `${SITE_URL}/${category}`,
     },
     openGraph: {
-      title: `Trkačke priče  - ${categoryMeta.title}`,
+      title: `Zorun  - ${categoryMeta.title}`,
       description: categoryMeta.description,
       url: `${SITE_URL}/${category}`,
       type: 'website',
