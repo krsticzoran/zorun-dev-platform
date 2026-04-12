@@ -1,20 +1,20 @@
-import Image from "next/image";
-import { Container } from "@/components/layout/container";
-import type { Post } from "#site/content";
-import { CategoryData } from "@/type/category-data";
-import { CategoryFilter } from "@/components/category/category-filter";
-import { CategoryPostsGrid } from "./category-posts-grid";
-import { Suspense } from "react";
+import Image from 'next/image'
+import { Container } from '@/components/layout/container'
+import type { Post } from '#site/content'
+import { CategoryData } from '@/type/category-data'
+import { CategoryFilter } from '@/components/category/category-filter'
+import { CategoryPostsGrid } from './category-posts-grid'
+import { Suspense } from 'react'
 
 interface CategoryPageLayoutProps {
-  categoryMeta: CategoryData;
-  featuredPost: Post;
-  gridPosts: Post[];
-  category: string;
-  currentPage: number;
-  totalPages: number;
-  categoryPosts: Post[];
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  categoryMeta: CategoryData
+  featuredPost: Post
+  gridPosts: Post[]
+  category: string
+  currentPage: number
+  totalPages: number
+  categoryPosts: Post[]
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function CategoryPageLayout({
@@ -38,19 +38,17 @@ export async function CategoryPageLayout({
           priority
           sizes="100vw"
           className={`object-cover z-0 ${
-            categoryMeta.objectPosition === "top"
-              ? "object-top"
-              : categoryMeta.objectPosition === "bottom"
-              ? "object-bottom"
-              : "object-center"
+            categoryMeta.objectPosition === 'top'
+              ? 'object-top'
+              : categoryMeta.objectPosition === 'bottom'
+                ? 'object-bottom'
+                : 'object-center'
           }`}
         />
       </div>
 
       <Container className="pt-16 sm:pt-20 xl:pt-24 mb-5">
-        <h1 className="text-black max-w-[1000px] mb-10 xl:mb-14">
-          {categoryMeta.excerpt}
-        </h1>
+        <h1 className="text-black max-w-[1000px] mb-10 xl:mb-14">{categoryMeta.excerpt}</h1>
 
         <Suspense
           fallback={
@@ -76,5 +74,5 @@ export async function CategoryPageLayout({
         </Suspense>
       </Container>
     </main>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import { CategoryCard } from "@/components/cards/categroy-card";
-import { PaginationNav } from "@/components/ui/pagination-nav";
-import type { Post } from "#site/content";
+import { CategoryCard } from '@/components/cards/categroy-card'
+import { PaginationNav } from '@/components/ui/pagination-nav'
+import type { Post } from '#site/content'
 
 interface CategoryPostsGridProps {
-  featuredPost: Post;
-  gridPosts: Post[];
-  category: string;
-  currentPage: number;
-  totalPages: number;
+  featuredPost: Post
+  gridPosts: Post[]
+  category: string
+  currentPage: number
+  totalPages: number
 }
 
 export function CategoryPostsGrid({
@@ -27,11 +27,7 @@ export function CategoryPostsGrid({
         ))}
       </div>
 
-      <PaginationNav
-        category={category}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      <PaginationNav category={category} currentPage={currentPage} totalPages={totalPages} />
     </div>
-  );
+  )
 }
