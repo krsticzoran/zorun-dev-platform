@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Post } from '@/type/post'
+import type { Post } from '#site/content'
 
 interface HomeCardProps {
   post: Post

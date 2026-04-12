@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
-import { Post } from "@/type/post";
+import type { Post } from "#site/content";
 import { CategoryData } from "@/type/category-data";
 import { CategoryFilter } from "@/components/category/category-filter";
 import { CategoryPostsGrid } from "./category-posts-grid";

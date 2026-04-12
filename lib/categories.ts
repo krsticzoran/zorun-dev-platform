@@ -2,23 +2,9 @@ import missionImg from '@/assets/images/categories/sub3.webp'
 import trainingImg from '@/assets/images/categories/image.webp'
 import lifestyleImg from '@/assets/images/categories/oprema.webp'
 
-import { StaticImageData } from 'next/image'
-import { Tag } from '@/lib/tags'
+import { CategoryData } from '@/type/category-data'
 
-export const categoriesData: Record<
-  string,
-  {
-    title: string
-    description: string
-    image: StaticImageData
-    alt: string
-    objectPosition?: 'center' | 'top' | 'bottom'
-    excerpt: string
-    ctaText: string
-    visible?: boolean
-    tags: Tag[]
-  }
-> = {
+export const categoriesData: Record<string, CategoryData> = {
   'sub-3-journey': {
     title: 'Sub 3 Journey',
     description:

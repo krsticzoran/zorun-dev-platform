@@ -1,6 +1,6 @@
 import { CategoryCard } from "@/components/cards/categroy-card";
 import { PaginationNav } from "@/components/ui/pagination-nav";
-import { Post } from "@/type/post";
+import type { Post } from "#site/content";
 
 interface CategoryPostsGridProps {
   featuredPost: Post;

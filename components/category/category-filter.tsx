@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Tag, TAGS } from '@/lib/tags'
-import { Post } from '@/type/post'
+import type { Post } from '#site/content'
 import { CategoryCard } from '@/components/cards/categroy-card'
 import { CategoryPostsGrid } from './category-posts-grid'
 
