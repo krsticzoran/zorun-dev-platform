@@ -2,8 +2,7 @@ import { posts } from '#site/content'
 
 import { notFound } from 'next/navigation'
 import { categoriesData } from '@/lib/categories'
-import { POSTS_PER_PAGE } from '@/lib/constants'
-import { SITE_URL } from '@/lib/constants'
+import { POSTS_PER_PAGE, SITE_URL } from '@/lib/constants'
 import { CategoryPageLayout } from '@/components/category/category-page-layout'
 
 interface CategoryPageProps {
