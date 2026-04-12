@@ -1,6 +1,7 @@
 export const TAGS = {
-  dailylog: "#daily-log",
-  restday: "#rest-day",
+  beginner: "#beginner",
+  intermediate: "#intermediate",
+  advanced: "#advanced",
 } as const;
 
 export type Tag = keyof typeof TAGS;
