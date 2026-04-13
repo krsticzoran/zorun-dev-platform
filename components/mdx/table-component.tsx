@@ -16,7 +16,7 @@ export function TableComponent({ data }: GenericTableProps) {
   return (
     <>
       {/* Desktop */}
-      <div className="hidden lg:block overflow-x-auto mb-8">
+      <div className="hidden lg:block overflow-x-auto mb-8 mt-10">
         <table className="w-full border border-custom-gray text-left text-black leading-[22px]">
           <thead className="bg-custom-gray">
             <tr>
@@ -42,7 +42,7 @@ export function TableComponent({ data }: GenericTableProps) {
       </div>
 
       {/* Mobile */}
-      <div className="lg:hidden flex flex-col gap-6 mb-8">
+      <div className="lg:hidden flex flex-col gap-6 mb-8 mt-10">
         {data.map((row, idx) => (
           <div key={idx} className="border border-custom-gray p-4 rounded-md">
             {columns.map((col) => (
