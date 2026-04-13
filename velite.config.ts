@@ -15,7 +15,7 @@ export default defineConfig({
       pattern: "posts/**/*.mdx",
       schema: s
         .object({
-          title: s.string().max(99),
+          title: s.string().max(55),
           featured: s.boolean().optional(),
           slug: s.slug("posts"),
           description: s.string().max(999),
