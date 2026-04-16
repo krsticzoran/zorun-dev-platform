@@ -2,7 +2,8 @@ import { posts } from '#site/content'
 
 import { notFound } from 'next/navigation'
 import { categoriesData } from '@/lib/categories'
-import { POSTS_PER_PAGE, SITE_URL } from '@/lib/constants'
+import { POSTS_PER_PAGE } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
 import { CategoryPageLayout } from '@/components/category/category-page-layout'
 
 interface CategoryPageProps {
@@ -60,7 +61,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (!categoryPosts.length) {
     notFound()
   }
-
   const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE)
 
   const paginatedPosts = categoryPosts.slice(0, POSTS_PER_PAGE)
