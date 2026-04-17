@@ -1,5 +1,7 @@
 # Copilot Instructions — zorun.dev
 
+IMPORTANT: Follow the general Next.js development standards defined in .github/nextjs-standards.md.
+
 ## Project Overview
 
 Next.js 16 (App Router) + React 19 blog for running content.  
@@ -66,8 +68,7 @@ Adding a new category requires updating both `velite.config.ts` enum and `lib/ca
 - **Data Fetching:** Fetch data directly in Server Components where possible. Use React **Suspense** for granular loading states.
 - **Type Safety:** Use **Zod** for any runtime validation (API routes or form submissions).
 - **Performance:** Always use `next/image` for images and `next/font` for typography.
-
-
+- **File naming:** Component files use `kebab-case` (e.g., `home-hero.tsx`, `category-page-layout.tsx`) — not PascalCase. No barrel `index.ts` files; import components directly.
 
 ---
 
