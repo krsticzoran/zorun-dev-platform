@@ -55,8 +55,8 @@ export function PaceCalculator() {
     if (clean.length === 2) nextRef?.current?.focus()
   }
 
-  function padField(val: string, setter: (v: string) => void) {
-    if (val.length === 1) setter(val.padStart(2, '0'))
+  function padOnBlur(e: React.FocusEvent<HTMLInputElement>, setter: (v: string) => void) {
+    if (e.target.value.length === 1) setter(e.target.value.padStart(2, '0'))
   }
 
   const inputClass =
@@ -106,7 +106,7 @@ export function PaceCalculator() {
                   maxLength={2}
                   value={hours}
                   onChange={(e) => handleTimeChange(e.target.value, setHours, minutesRef)}
-                  onBlur={() => padField(hours, setHours)}
+                  onBlur={(e) => padOnBlur(e, setHours)}
                   onKeyDown={handleKeyDown}
                   placeholder="00"
                   aria-label="Hours"
@@ -124,7 +124,7 @@ export function PaceCalculator() {
                   maxLength={2}
                   value={minutes}
                   onChange={(e) => handleTimeChange(e.target.value, setMinutes, secondsRef)}
-                  onBlur={() => padField(minutes, setMinutes)}
+                  onBlur={(e) => padOnBlur(e, setMinutes)}
                   onKeyDown={handleKeyDown}
                   placeholder="00"
                   aria-label="Minutes"
@@ -142,7 +142,7 @@ export function PaceCalculator() {
                   maxLength={2}
                   value={seconds}
                   onChange={(e) => handleTimeChange(e.target.value, setSeconds)}
-                  onBlur={() => padField(seconds, setSeconds)}
+                  onBlur={(e) => padOnBlur(e, setSeconds)}
                   onKeyDown={handleKeyDown}
                   placeholder="00"
                   aria-label="Seconds"
