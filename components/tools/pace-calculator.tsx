@@ -187,7 +187,9 @@ export function PaceCalculator() {
           <div className="bg-custom-dark text-white px-6 sm:px-8 py-5 flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Your VDOT</p>
-              <p className="text-5xl font-medium leading-none">{result.vdot}</p>
+              <p className="text-5xl font-medium leading-none">
+                {Number.isInteger(result.vdot) ? result.vdot : result.vdot.toFixed(1)}
+              </p>
             </div>
             <div className="text-right">
               <p className="text-xs uppercase tracking-widest text-white/60 mb-1">
