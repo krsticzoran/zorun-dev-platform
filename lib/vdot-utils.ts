@@ -29,6 +29,21 @@ export function parseTimeToSeconds(time: string): number {
 }
 
 /**
+ * Returns the valid time range (slowest / fastest) for a given discipline.
+ * Table index 0 = VDOT 30 (slowest), last index = VDOT 85 (fastest).
+ */
+export function getTimeRange(disciplineKey: keyof VdotLookupEntry): {
+  slowest: string
+  fastest: string
+} {
+  const table = VDOT_LOOKUP_TABLE
+  return {
+    slowest: table[0][disciplineKey] as string,
+    fastest: table[table.length - 1][disciplineKey] as string,
+  }
+}
+
+/**
  * Binary search through the VDOT table to find the entry whose time for
  * the given discipline is closest to inputSeconds.
  *

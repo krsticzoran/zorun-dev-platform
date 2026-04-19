@@ -2,7 +2,12 @@
 
 import { useRef, useState } from 'react'
 import type { VdotLookupEntry } from '@/lib/vdot-lookup'
-import { DISCIPLINES, findClosestVdotEntry } from '@/lib/vdot-utils'
+import {
+  DISCIPLINES,
+  findClosestVdotEntry,
+  getTimeRange,
+  parseTimeToSeconds,
+} from '@/lib/vdot-utils'
 
 export function PaceCalculator() {
   const [discipline, setDiscipline] = useState<keyof VdotLookupEntry>('time5k')
@@ -36,6 +41,17 @@ export function PaceCalculator() {
     }
 
     const totalSeconds = h * 3600 + m * 60 + s
+
+    const range = getTimeRange(discipline)
+    const slowestSeconds = parseTimeToSeconds(range.slowest)
+    const fastestSeconds = parseTimeToSeconds(range.fastest)
+    if (totalSeconds > slowestSeconds || totalSeconds < fastestSeconds) {
+      setError(
+        `Time out of range for ${selectedLabel}. Must be between ${range.fastest} (fastest) and ${range.slowest} (slowest).`
+      )
+      return
+    }
+
     const entry = findClosestVdotEntry(discipline, totalSeconds)
     setResult(entry)
   }
