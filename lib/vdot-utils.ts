@@ -119,6 +119,16 @@ export function parseTimeToSeconds(time: string): number {
 }
 
 /**
+ * Convert a pace string (M:SS or H:MM:SS per km) to pace per mile.
+ * Multiplies by 1.60934. Returns empty string for falsy input.
+ */
+export function kmPaceToMilePace(pace: string): string {
+  if (!pace) return ''
+  const seconds = parseTimeToSeconds(pace)
+  return formatSeconds(seconds * 1.60934)
+}
+
+/**
  * Format a number of seconds back into a human-readable time string.
  * >= 1 hour  → H:MM:SS
  * < 1 hour   → M:SS
