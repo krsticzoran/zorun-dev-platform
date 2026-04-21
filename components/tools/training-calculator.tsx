@@ -6,8 +6,6 @@ import { useVdotCalculator } from '@/hook/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
 
 const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; description: string }[] = [
-  { label: 'Easy (min)', key: 'easyMin', description: 'Slowest end of easy pace (per km)' },
-  { label: 'Easy (max)', key: 'easyMax', description: 'Fastest end of easy pace (per km)' },
   { label: 'Threshold', key: 'threshold', description: 'Tempo / lactate threshold pace (per km)' },
   { label: 'Interval', key: 'interval', description: 'VO₂max interval pace (per km)' },
   { label: 'Rep 200m', key: 'rep200', description: 'Target time for 200m repetitions' },
@@ -65,6 +63,20 @@ export function TrainingCalculator() {
               Training Paces
             </p>
             <div className="flex flex-col divide-y divide-custom-gray">
+              {/* Easy / Long runs — combined min–max row */}
+              {result.easyMin && result.easyMax && (
+                <div className="flex justify-between items-center py-3">
+                  <div>
+                    <span className="text-sm font-medium text-custom-dark">
+                      Easy &amp; Long Runs
+                    </span>
+                    <p className="text-xs text-custom-dark-gray mt-0.5">Easy pace range (per km)</p>
+                  </div>
+                  <span className="text-base font-medium text-custom-dark tabular-nums ml-4 shrink-0">
+                    {result.easyMin} – {result.easyMax}
+                  </span>
+                </div>
+              )}
               {TRAINING_ZONES.map((zone) => {
                 const val = result[zone.key]
                 if (val === null) {
