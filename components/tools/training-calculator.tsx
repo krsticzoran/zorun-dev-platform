@@ -112,7 +112,21 @@ export function TrainingCalculator() {
             </p>
             <div className="flex flex-col divide-y divide-custom-gray">
               {TRAINING_ZONES.map((zone) => {
-                const val = result[zone.key] as string
+                const val = result[zone.key]
+                if (val === null) {
+                  // null = not recommended at this fitness level
+                  return (
+                    <div key={zone.key} className="flex justify-between items-start py-3 gap-4">
+                      <div>
+                        <span className="text-sm font-medium text-custom-dark">{zone.label}</span>
+                        <p className="text-xs text-custom-dark-gray mt-0.5">{zone.description}</p>
+                      </div>
+                      <p className="text-xs text-custom-dark-gray italic text-left max-w-[250px] shrink-0">
+                        At this fitness level, high-intensity intervals are not yet recommended.
+                      </p>
+                    </div>
+                  )
+                }
                 if (!val) return null
                 return (
                   <div key={zone.key} className="flex justify-between items-center py-3">

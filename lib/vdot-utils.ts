@@ -16,7 +16,7 @@ export interface TrainingPaces {
   easyMin: string
   easyMax: string
   threshold: string
-  interval: string
+  interval: string | null
   rep200: string
   rep400: string
 }
@@ -44,7 +44,7 @@ export function getTrainingPacesForVdot(vdot: number): TrainingPaces {
   // Fraction between lo and hi (both have VDOT step of 1)
   const t = (vdot - table[lo].vdot) / (table[hi].vdot - table[lo].vdot)
 
-  const result: Record<string, string | number> = {
+  const result: Record<string, string | number | null> = {
     vdot: Math.round(vdot * 10) / 10,
   }
 
@@ -69,7 +69,9 @@ export function getTrainingPacesForVdot(vdot: number): TrainingPaces {
       result[key] = hiVal
       continue
     }
-    result[key] = ''
+
+    // Both empty — signal as not recommended (only happens for interval at low VDOT)
+    result[key] = null
   }
 
   return result as unknown as TrainingPaces
