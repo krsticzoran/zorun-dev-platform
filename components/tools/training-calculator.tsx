@@ -1,16 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import type { VdotLookupEntry } from '@/lib/vdot-lookup'
-import {
-  DISCIPLINES,
-  findClosestVdotEntry,
-  getTimeRange,
-  getTrainingPacesForVdot,
-  parseTimeToSeconds,
-  type TrainingPaces,
-} from '@/lib/vdot-utils'
-import { useTimeInput } from '@/hook/useTimeInput'
+import { DISCIPLINES, getTrainingPacesForVdot, type TrainingPaces } from '@/lib/vdot-utils'
+import { useVdotCalculator } from '@/hook/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
 
 const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; description: string }[] = [
@@ -23,58 +15,20 @@ const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; description: st
 ]
 
 export function TrainingCalculator() {
-  const [discipline, setDiscipline] = useState<keyof VdotLookupEntry>('time5k')
   const [result, setResult] = useState<TrainingPaces | null>(null)
   const [vdot, setVdot] = useState<number | null>(null)
-  const [error, setError] = useState('')
 
-  const selectedLabel = DISCIPLINES.find((d) => d.key === discipline)?.label ?? ''
-
-  function clearResult() {
-    setResult(null)
-    setVdot(null)
-    setError('')
-  }
-
-  const timeInput = useTimeInput(clearResult)
-  const { hours, minutes, seconds } = timeInput
-
-  function handleDisciplineChange(key: keyof VdotLookupEntry) {
-    setDiscipline(key)
-    clearResult()
-  }
-
-  function handleCalculate() {
-    setError('')
-    setResult(null)
-    setVdot(null)
-
-    const h = parseInt(hours || '0', 10)
-    const m = parseInt(minutes || '0', 10)
-    const s = parseInt(seconds || '0', 10)
-
-    if (isNaN(h) || isNaN(m) || isNaN(s) || m > 59 || s > 59 || (h === 0 && m === 0 && s === 0)) {
-      setError('Enter a valid time. Minutes and seconds must be 0–59.')
-      return
-    }
-
-    const totalSeconds = h * 3600 + m * 60 + s
-
-    const range = getTimeRange(discipline)
-    const slowestSeconds = parseTimeToSeconds(range.slowest)
-    const fastestSeconds = parseTimeToSeconds(range.fastest)
-    if (totalSeconds > slowestSeconds || totalSeconds < fastestSeconds) {
-      setError(
-        `Time out of range for ${selectedLabel}. Must be between ${range.fastest} (fastest) and ${range.slowest} (slowest).`
-      )
-      return
-    }
-
-    const vdotEntry = findClosestVdotEntry(discipline, totalSeconds)
-    const paces = getTrainingPacesForVdot(vdotEntry.vdot)
-    setVdot(vdotEntry.vdot)
-    setResult(paces)
-  }
+  const { discipline, selectedLabel, error, timeInput, handleDisciplineChange, handleCalculate } =
+    useVdotCalculator(
+      (entry) => {
+        setVdot(entry.vdot)
+        setResult(getTrainingPacesForVdot(entry.vdot))
+      },
+      () => {
+        setResult(null)
+        setVdot(null)
+      }
+    )
 
   return (
     <div className="w-full max-w-2xl mx-auto">
