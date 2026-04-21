@@ -6,20 +6,33 @@ import {
   DISCIPLINES,
   findClosestVdotEntry,
   getTimeRange,
+  getTrainingPacesForVdot,
   parseTimeToSeconds,
+  type TrainingPaces,
 } from '@/lib/vdot-utils'
 import { useTimeInput } from '@/hook/useTimeInput'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
 
-export function PaceCalculator() {
+const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; description: string }[] = [
+  { label: 'Easy (min)', key: 'easyMin', description: 'Slowest end of easy pace (per km)' },
+  { label: 'Easy (max)', key: 'easyMax', description: 'Fastest end of easy pace (per km)' },
+  { label: 'Threshold', key: 'threshold', description: 'Tempo / lactate threshold pace (per km)' },
+  { label: 'Interval', key: 'interval', description: 'VO₂max interval pace (per km)' },
+  { label: 'Rep 200m', key: 'rep200', description: 'Target time for 200m repetitions' },
+  { label: 'Rep 400m', key: 'rep400', description: 'Target time for 400m repetitions' },
+]
+
+export function TrainingCalculator() {
   const [discipline, setDiscipline] = useState<keyof VdotLookupEntry>('time5k')
-  const [result, setResult] = useState<VdotLookupEntry | null>(null)
+  const [result, setResult] = useState<TrainingPaces | null>(null)
+  const [vdot, setVdot] = useState<number | null>(null)
   const [error, setError] = useState('')
 
   const selectedLabel = DISCIPLINES.find((d) => d.key === discipline)?.label ?? ''
 
   function clearResult() {
     setResult(null)
+    setVdot(null)
     setError('')
   }
 
@@ -34,6 +47,7 @@ export function PaceCalculator() {
   function handleCalculate() {
     setError('')
     setResult(null)
+    setVdot(null)
 
     const h = parseInt(hours || '0', 10)
     const m = parseInt(minutes || '0', 10)
@@ -56,7 +70,10 @@ export function PaceCalculator() {
       return
     }
 
-    setResult(findClosestVdotEntry(discipline, totalSeconds))
+    const vdotEntry = findClosestVdotEntry(discipline, totalSeconds)
+    const paces = getTrainingPacesForVdot(vdotEntry.vdot)
+    setVdot(vdotEntry.vdot)
+    setResult(paces)
   }
 
   return (
@@ -69,45 +86,46 @@ export function PaceCalculator() {
         timeInput={timeInput}
         error={error}
         onCalculate={handleCalculate}
-        buttonLabel="Calculate Equivalent Times"
+        buttonLabel="Calculate Training Paces"
       />
 
-      {/* Results */}
-      {result && (
+      {result && vdot !== null && (
         <div className="bg-white border border-custom-gray rounded-2xl overflow-hidden">
-          {/* VDOT badge */}
+          {/* VDOT header */}
           <div className="bg-custom-dark text-white px-6 sm:px-8 py-5 flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Your VDOT</p>
               <p className="text-5xl font-medium leading-none">
-                {Number.isInteger(result.vdot) ? result.vdot : result.vdot.toFixed(1)}
+                {Number.isInteger(vdot) ? vdot : vdot.toFixed(1)}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">
-                Selected Distance
-              </p>
+              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Based on</p>
               <p className="text-lg font-medium">{selectedLabel}</p>
-              <p className="text-2xl font-medium text-custom-accent">
-                {result[discipline] as string}
-              </p>
             </div>
           </div>
 
-          {/* Equivalent times table */}
+          {/* Training paces */}
           <div className="px-6 sm:px-8 py-6">
             <p className="text-xs uppercase tracking-widest text-custom-dark-gray mb-4">
-              Equivalent Times
+              Training Paces
             </p>
             <div className="flex flex-col divide-y divide-custom-gray">
-              {DISCIPLINES.filter((d) => d.key !== discipline).map((d) => (
-                <div key={d.key} className="flex justify-between items-center py-3">
-                  <span className="text-sm text-custom-dark-gray">{d.label}</span>
-                  <span className="text-base font-medium text-custom-dark tabular-nums">
-                    {result[d.key] as string}
-                  </span>
-                </div>
-              ))}
+              {TRAINING_ZONES.map((zone) => {
+                const val = result[zone.key] as string
+                if (!val) return null
+                return (
+                  <div key={zone.key} className="flex justify-between items-center py-3">
+                    <div>
+                      <span className="text-sm font-medium text-custom-dark">{zone.label}</span>
+                      <p className="text-xs text-custom-dark-gray mt-0.5">{zone.description}</p>
+                    </div>
+                    <span className="text-base font-medium text-custom-dark tabular-nums ml-4 shrink-0">
+                      {val}
+                    </span>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

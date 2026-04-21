@@ -1,4 +1,79 @@
 import { VDOT_LOOKUP_TABLE, type VdotLookupEntry } from '@/lib/vdot-lookup'
+import { TRAINING_LOOKUP_TABLE, type TrainingEntry } from '@/lib/training-lookup'
+
+/** All time-field keys on TrainingEntry (excludes `vdot`). */
+const TRAINING_PACE_KEYS: (keyof TrainingEntry)[] = [
+  'easyMin',
+  'easyMax',
+  'threshold',
+  'interval',
+  'rep200',
+  'rep400',
+]
+
+export interface TrainingPaces {
+  vdot: number
+  easyMin: string
+  easyMax: string
+  threshold: string
+  interval: string
+  rep200: string
+  rep400: string
+}
+
+/**
+ * Given a precise decimal VDOT (e.g. 50.4 from findClosestVdotEntry),
+ * returns linearly interpolated training paces for all zones.
+ *
+ * Empty `interval` values in the source table are handled by searching
+ * outward for the nearest non-empty neighbours before interpolating.
+ *
+ * The training table is sorted by vdot ascending (30 → 85) with integer steps.
+ */
+export function getTrainingPacesForVdot(vdot: number): TrainingPaces {
+  const table = TRAINING_LOOKUP_TABLE
+
+  // Clamp to table bounds
+  if (vdot <= table[0].vdot) return { ...table[0] }
+  if (vdot >= table[table.length - 1].vdot) return { ...table[table.length - 1] }
+
+  // Find lower index: floor index where table[i].vdot <= vdot
+  const lo = Math.min(table.findIndex((e) => e.vdot > vdot) - 1, table.length - 2)
+  const hi = lo + 1
+
+  // Fraction between lo and hi (both have VDOT step of 1)
+  const t = (vdot - table[lo].vdot) / (table[hi].vdot - table[lo].vdot)
+
+  const result: Record<string, string | number> = {
+    vdot: Math.round(vdot * 10) / 10,
+  }
+
+  for (const key of TRAINING_PACE_KEYS) {
+    const loVal = table[lo][key] as string
+    const hiVal = table[hi][key] as string
+
+    // If both are present, interpolate
+    if (loVal && hiVal) {
+      const loSec = parseTimeToSeconds(loVal)
+      const hiSec = parseTimeToSeconds(hiVal)
+      result[key] = formatSeconds(loSec + t * (hiSec - loSec))
+      continue
+    }
+
+    // If one is missing, use the non-empty one (fallback to neighbour)
+    if (loVal) {
+      result[key] = loVal
+      continue
+    }
+    if (hiVal) {
+      result[key] = hiVal
+      continue
+    }
+    result[key] = ''
+  }
+
+  return result as unknown as TrainingPaces
+}
 
 export interface Discipline {
   label: string

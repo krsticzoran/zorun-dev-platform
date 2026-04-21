@@ -1,0 +1,68 @@
+export interface TrainingEntry {
+  vdot: number;
+  easyMin: string;
+  easyMax: string;
+  threshold: string;
+  interval: string; 
+  rep200: string;
+  rep400: string;
+}
+
+export const TRAINING_LOOKUP_TABLE: TrainingEntry[] = [
+  { vdot: 30, easyMin: "7:14", easyMax: "8:20", threshold: "6:24", interval: "", rep200: "1:07", rep400: "2:14" },
+  { vdot: 31, easyMin: "7:03", easyMax: "8:08", threshold: "6:14", interval: "", rep200: "1:05", rep400: "2:10" },
+  { vdot: 32, easyMin: "6:53", easyMax: "7:57", threshold: "6:05", interval: "", rep200: "1:03", rep400: "2:06" },
+  { vdot: 33, easyMin: "6:44", easyMax: "7:46", threshold: "5:56", interval: "", rep200: "1:01", rep400: "2:03" },
+  { vdot: 34, easyMin: "6:34", easyMax: "7:36", threshold: "5:48", interval: "", rep200: "1:00", rep400: "2:00" },
+  { vdot: 35, easyMin: "6:26", easyMax: "7:27", threshold: "5:40", interval: "", rep200: "0:58", rep400: "1:57" },
+  { vdot: 36, easyMin: "6:17", easyMax: "7:17", threshold: "5:33", interval: "5:07", rep200: "0:57", rep400: "1:54" },
+  { vdot: 37, easyMin: "6:09", easyMax: "7:08", threshold: "5:25", interval: "5:00", rep200: "0:55", rep400: "1:51" },
+  { vdot: 38, easyMin: "6:02", easyMax: "6:59", threshold: "5:19", interval: "4:54", rep200: "0:54", rep400: "1:48" },
+  { vdot: 39, easyMin: "5:54", easyMax: "6:51", threshold: "5:12", interval: "4:48", rep200: "0:53", rep400: "1:46" },
+  { vdot: 40, easyMin: "5:47", easyMax: "6:43", threshold: "5:06", interval: "4:42", rep200: "0:52", rep400: "1:44" },
+  { vdot: 41, easyMin: "5:41", easyMax: "6:35", threshold: "5:00", interval: "4:36", rep200: "0:51", rep400: "1:42" },
+  { vdot: 42, easyMin: "5:34", easyMax: "6:28", threshold: "4:54", interval: "4:31", rep200: "0:50", rep400: "1:40" },
+  { vdot: 43, easyMin: "5:28", easyMax: "6:21", threshold: "4:49", interval: "4:26", rep200: "0:49", rep400: "1:38" },
+  { vdot: 44, easyMin: "5:22", easyMax: "6:14", threshold: "4:43", interval: "4:21", rep200: "0:48", rep400: "1:36" },
+  { vdot: 45, easyMin: "5:16", easyMax: "6:08", threshold: "4:38", interval: "4:16", rep200: "0:47", rep400: "1:34" },
+  { vdot: 46, easyMin: "5:11", easyMax: "6:01", threshold: "4:33", interval: "4:12", rep200: "0:46", rep400: "1:32" },
+  { vdot: 47, easyMin: "5:05", easyMax: "5:55", threshold: "4:29", interval: "4:07", rep200: "0:45", rep400: "1:30" },
+  { vdot: 48, easyMin: "5:00", easyMax: "5:49", threshold: "4:24", interval: "4:03", rep200: "0:44", rep400: "1:29" },
+  { vdot: 49, easyMin: "4:55", easyMax: "5:44", threshold: "4:20", interval: "3:59", rep200: "0:44", rep400: "1:28" },
+  { vdot: 50, easyMin: "4:51", easyMax: "5:38", threshold: "4:15", interval: "3:55", rep200: "0:43", rep400: "1:27" },
+  { vdot: 51, easyMin: "4:46", easyMax: "5:33", threshold: "4:11", interval: "3:51", rep200: "0:43", rep400: "1:26" },
+  { vdot: 52, easyMin: "4:42", easyMax: "5:28", threshold: "4:07", interval: "3:48", rep200: "0:42", rep400: "1:25" },
+  { vdot: 53, easyMin: "4:37", easyMax: "5:23", threshold: "4:04", interval: "3:44", rep200: "0:42", rep400: "1:24" },
+  { vdot: 54, easyMin: "4:33", easyMax: "5:18", threshold: "4:00", interval: "3:41", rep200: "0:41", rep400: "1:22" },
+  { vdot: 55, easyMin: "4:29", easyMax: "5:14", threshold: "3:56", interval: "3:37", rep200: "0:40", rep400: "1:21" },
+  { vdot: 56, easyMin: "4:25", easyMax: "5:09", threshold: "3:53", interval: "3:34", rep200: "0:40", rep400: "1:20" },
+  { vdot: 57, easyMin: "4:21", easyMax: "5:05", threshold: "3:50", interval: "3:31", rep200: "0:39", rep400: "1:19" },
+  { vdot: 58, easyMin: "4:18", easyMax: "5:01", threshold: "3:45", interval: "3:28", rep200: "0:38", rep400: "1:17" },
+  { vdot: 59, easyMin: "4:14", easyMax: "4:56", threshold: "3:43", interval: "3:25", rep200: "0:38", rep400: "1:16" },
+  { vdot: 60, easyMin: "4:11", easyMax: "4:53", threshold: "3:40", interval: "3:22", rep200: "0:37", rep400: "1:15" },
+  { vdot: 61, easyMin: "4:07", easyMax: "4:49", threshold: "3:37", interval: "3:19", rep200: "0:37", rep400: "1:14" },
+  { vdot: 62, easyMin: "4:04", easyMax: "4:45", threshold: "3:34", interval: "3:17", rep200: "0:36", rep400: "1:13" },
+  { vdot: 63, easyMin: "4:01", easyMax: "4:41", threshold: "3:32", interval: "3:15", rep200: "0:36", rep400: "1:12" },
+  { vdot: 64, easyMin: "3:58", easyMax: "4:38", threshold: "3:29", interval: "3:12", rep200: "0:35", rep400: "1:11" }, 
+  { vdot: 65, easyMin: "3:55", easyMax: "4:34", threshold: "3:26", interval: "3:10", rep200: "0:35", rep400: "1:10" }, 
+  { vdot: 66, easyMin: "3:52", easyMax: "4:31", threshold: "3:24", interval: "3:08", rep200: "0:34", rep400: "1:09" }, 
+  { vdot: 67, easyMin: "3:49", easyMax: "4:28", threshold: "3:21", interval: "3:05", rep200: "0:34", rep400: "1:08" },
+  { vdot: 68, easyMin: "3:46", easyMax: "4:24", threshold: "3:19", interval: "3:03", rep200: "0:33", rep400: "1:07" },
+  { vdot: 69, easyMin: "3:44", easyMax: "4:21", threshold: "3:16", interval: "3:01", rep200: "0:33", rep400: "1:06" },
+  { vdot: 70, easyMin: "3:41", easyMax: "4:18", threshold: "3:14", interval: "2:59", rep200: "0:32", rep400: "1:05" },
+  { vdot: 71, easyMin: "3:39", easyMax: "4:15", threshold: "3:12", interval: "2:57", rep200: "0:32", rep400: "1:04" },
+  { vdot: 72, easyMin: "3:36", easyMax: "4:12", threshold: "3:10", interval: "2:55", rep200: "0:31", rep400: "1:03" },
+  { vdot: 73, easyMin: "3:34", easyMax: "4:10", threshold: "3:08", interval: "2:53", rep200: "0:31", rep400: "1:02" },
+  { vdot: 74, easyMin: "3:31", easyMax: "4:07", threshold: "3:06", interval: "2:51", rep200: "0:31", rep400: "1:02" },
+  { vdot: 75, easyMin: "3:29", easyMax: "4:04", threshold: "3:04", interval: "2:49", rep200: "0:30", rep400: "1:01" },
+  { vdot: 76, easyMin: "3:27", easyMax: "4:02", threshold: "3:02", interval: "2:48", rep200: "0:30", rep400: "1:00" },
+  { vdot: 77, easyMin: "3:25", easyMax: "3:59", threshold: "3:00", interval: "2:46", rep200: "0:29", rep400: "0:59" },
+  { vdot: 78, easyMin: "3:23", easyMax: "3:56", threshold: "2:58", interval: "2:44", rep200: "0:29", rep400: "0:59" },
+  { vdot: 79, easyMin: "3:20", easyMax: "3:54", threshold: "2:56", interval: "2:42", rep200: "0:29", rep400: "0:58" },
+  { vdot: 80, easyMin: "3:18", easyMax: "3:52", threshold: "2:54", interval: "2:41", rep200: "0:29", rep400: "0:58" },
+  { vdot: 81, easyMin: "3:16", easyMax: "3:49", threshold: "2:53", interval: "2:39", rep200: "0:28", rep400: "0:57" },
+  { vdot: 82, easyMin: "3:14", easyMax: "3:47", threshold: "2:51", interval: "2:38", rep200: "0:28", rep400: "0:56" },
+  { vdot: 83, easyMin: "3:13", easyMax: "3:45", threshold: "2:49", interval: "2:36", rep200: "0:28", rep400: "0:56" },
+  { vdot: 84, easyMin: "3:11", easyMax: "3:43", threshold: "2:48", interval: "2:35", rep200: "0:28", rep400: "0:55" },
+  { vdot: 85, easyMin: "3:09", easyMax: "3:40", threshold: "2:46", interval: "2:33", rep200: "0:27", rep400: "0:55" },
+];
