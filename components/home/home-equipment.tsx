@@ -1,6 +1,6 @@
 import { Container } from "../layout/container";
 import HomeCard from "../cards/home-card";
-import { useCategoryPosts } from "@/hook/useCategoryPosts";
+import { useCategoryPosts } from "@/hooks/useCategoryPosts";
 import Quote from "./quotes";
 import { SectionHeader } from "../ui/section-header";
 

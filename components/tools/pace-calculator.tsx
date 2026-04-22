@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { VdotLookupEntry } from '@/lib/vdot-lookup'
 import { DISCIPLINES } from '@/lib/vdot-utils'
-import { useVdotCalculator } from '@/hook/useVdotCalculator'
+import { useVdotCalculator } from '@/hooks/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
 
 export function PaceCalculator() {

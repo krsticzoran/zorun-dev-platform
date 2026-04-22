@@ -1,6 +1,6 @@
 import type { VdotLookupEntry } from '@/lib/vdot-lookup'
 import type { Discipline } from '@/lib/vdot-utils'
-import type { TimeInputState } from '@/hook/useTimeInput'
+import type { TimeInputState } from '@/hooks/useTimeInput'
 import { TimeInputFields } from '@/components/tools/time-input-fields'
 
 interface CalculatorInputCardProps {

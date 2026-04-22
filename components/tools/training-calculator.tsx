@@ -7,7 +7,7 @@ import {
   kmPaceToMilePace,
   type TrainingPaces,
 } from '@/lib/vdot-utils'
-import { useVdotCalculator } from '@/hook/useVdotCalculator'
+import { useVdotCalculator } from '@/hooks/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
 
 const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; rep?: true }[] = [

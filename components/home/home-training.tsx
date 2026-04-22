@@ -1,7 +1,7 @@
 import { CategoryCard } from "@/components/cards/categroy-card";
 import { Container } from "../layout/container";
 import { SectionHeader } from "../ui/section-header";
-import { useCategoryPosts } from "@/hook/useCategoryPosts";
+import { useCategoryPosts } from "@/hooks/useCategoryPosts";
 
 export default function HomeEquipment() {
   const trainingPosts = useCategoryPosts("logs");

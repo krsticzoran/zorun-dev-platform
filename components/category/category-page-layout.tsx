@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Container } from '@/components/layout/container'
 import type { Post } from '#site/content'
-import { CategoryData } from '@/type/category-data'
+import { CategoryData } from '@/types/category-data'
 import { CategoryFilter } from '@/components/category/category-filter'
 import { CategoryPostsGrid } from './category-posts-grid'
 import { Suspense } from 'react'

@@ -1,6 +1,6 @@
 import { CategoryCard } from "@/components/cards/categroy-card";
 import { Container } from "../layout/container";
-import { useCategoryPosts } from "@/hook/useCategoryPosts";
+import { useCategoryPosts } from "@/hooks/useCategoryPosts";
 import { SectionHeader } from "../ui/section-header";
 
 export default function HomeCommunity() {

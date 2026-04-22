@@ -1,4 +1,4 @@
-import type { TimeInputState } from '@/hook/useTimeInput'
+import type { TimeInputState } from '@/hooks/useTimeInput'
 
 interface TimeInputFieldsProps {
   timeInput: TimeInputState

@@ -106,7 +106,7 @@ Always move client-only UI into a Client Component and import it directly in you
 
 - **Folders:** `kebab-case` (e.g., `user-profile/`)
 - **Component files:** `kebab-case` (e.g., `user-card.tsx`, `category-page-layout.tsx`)
-- **Utility/hook files:** `camelCase` (e.g., `useUser.ts`, `formatDate.ts`)
+- **Utility/hooks files:** `camelCase` (e.g., `useUser.ts`, `formatDate.ts`)
 - **Static assets:** `kebab-case` (e.g., `logo-dark.svg`)
 - **Variables/Functions:** `camelCase`
 - **Types/Interfaces:** `PascalCase`

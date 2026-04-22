@@ -8,7 +8,7 @@ import {
   getTimeRange,
   parseTimeToSeconds,
 } from '@/lib/vdot-utils'
-import { useTimeInput } from '@/hook/useTimeInput'
+import { useTimeInput } from '@/hooks/useTimeInput'
 
 /**
  * Shared form logic for both VDOT-based calculators.

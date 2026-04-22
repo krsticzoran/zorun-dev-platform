@@ -2,7 +2,7 @@ import missionImg from '@/assets/images/categories/sub3.webp'
 import trainingImg from '@/assets/images/categories/image.webp'
 import lifestyleImg from '@/assets/images/categories/oprema.webp'
 
-import { CategoryData } from '@/type/category-data'
+import { CategoryData } from '@/types/category-data'
 
 export const categoriesData: Record<string, CategoryData> = {
   'sub-3-journey': {
