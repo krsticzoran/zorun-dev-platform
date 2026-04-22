@@ -54,6 +54,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   const categoryMeta = categoriesData[category]
 
+  if (!categoryMeta) {
+    notFound()
+  }
+
   const categoryPosts = posts
     .filter((post) => post.category === category)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
