@@ -5,6 +5,7 @@ import type { VdotLookupEntry } from '@/lib/vdot-lookup'
 import { DISCIPLINES } from '@/lib/vdot-utils'
 import { useVdotCalculator } from '@/hooks/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
+import { VdotTooltip } from '@/components/tools/vdot-tooltip'
 
 export function PaceCalculator() {
   const [result, setResult] = useState<VdotLookupEntry | null>(null)
@@ -34,7 +35,10 @@ export function PaceCalculator() {
           {/* VDOT badge */}
           <div className="bg-custom-dark text-white px-6 sm:px-8 py-5 flex items-center justify-between">
             <div>
-              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Your VDOT</p>
+              <div className="flex items-center gap-1 mb-1">
+                <p className="text-xs uppercase tracking-widest text-white/60">Your VDOT</p>
+                <VdotTooltip />
+              </div>
               <p className="text-5xl font-medium leading-none">
                 {Number.isInteger(result.vdot) ? result.vdot : result.vdot.toFixed(1)}
               </p>

@@ -9,6 +9,7 @@ import {
 } from '@/lib/vdot-utils'
 import { useVdotCalculator } from '@/hooks/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
+import { VdotTooltip } from '@/components/tools/vdot-tooltip'
 
 const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; rep?: true }[] = [
   { label: 'Threshold', key: 'threshold' },
@@ -68,7 +69,10 @@ export function TrainingCalculator() {
           {/* VDOT header */}
           <div className="bg-custom-dark text-white px-6 sm:px-8 py-5 flex items-center justify-between">
             <div>
-              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Your VDOT</p>
+              <div className="flex items-center gap-1 mb-1">
+                <p className="text-xs uppercase tracking-widest text-white/60">Your VDOT</p>
+                <VdotTooltip />
+              </div>
               <p className="text-5xl font-medium leading-none">
                 {Number.isInteger(vdot) ? vdot : vdot.toFixed(1)}
               </p>
