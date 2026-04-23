@@ -10,10 +10,9 @@ export const metadata: Metadata = {
 
 export default function TrainingCalculatorPage() {
   return (
-    <main className="py-16 sm:py-20">
+    <main className="pt-40 pb-16 sm:pt-48 sm:pb-20">
       <Container>
         <div className="max-w-2xl mx-auto text-center mb-12">
-          <p className="text-xs uppercase tracking-widest text-custom-dark-gray mb-3">Tool</p>
           <h1 className="text-[40px] sm:text-[52px] xl:text-[64px] leading-tight font-medium uppercase mb-4">
             Training Paces
           </h1>
