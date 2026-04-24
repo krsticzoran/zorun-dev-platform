@@ -10,6 +10,7 @@ import {
 import { useVdotCalculator } from '@/hooks/useVdotCalculator'
 import { CalculatorInputCard } from '@/components/tools/calculator-input-card'
 import { VdotTooltip } from '@/components/tools/vdot-tooltip'
+import { TrainingZoneChart } from '@/components/tools/training-zone-chart'
 
 const TRAINING_ZONES: { label: string; key: keyof TrainingPaces; rep?: true }[] = [
   { label: 'Threshold', key: 'threshold' },
@@ -103,6 +104,9 @@ export function TrainingCalculator() {
               </div>
             </div>
           </div>
+
+          {/* Zone overview chart */}
+          <TrainingZoneChart paces={result} unit={unit} />
 
           {/* Training paces */}
           <div className="px-6 sm:px-8 py-6">
