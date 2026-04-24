@@ -49,15 +49,13 @@ export function TrainingZoneChart({ paces, unit }: Props) {
           Marathon / Tempo
         </div>
 
-        {/* Intervals — 20% */}
-        {z.hasInterval && (
-          <div
-            className="flex items-center justify-center text-[11px] font-semibold text-red-700"
-            style={{ width: W.interval, backgroundColor: '#dd233445' }}
-          >
-            Intervals
-          </div>
-        )}
+        {/* Intervals / Speed+Reps — 20%, always shown */}
+        <div
+          className="flex items-center justify-center text-[11px] font-semibold text-red-700"
+          style={{ width: W.interval, backgroundColor: '#dd233445' }}
+        >
+          {z.hasInterval ? 'Intervals' : 'Reps'}
+        </div>
       </div>
 
       {/* ── Boundary time labels below the bar ───────────────────────────── */}
