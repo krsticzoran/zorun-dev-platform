@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import './globals.css'
 import Header from '@/components/layout/header/header'
 import { Footer } from '@/components/layout/footer/footer'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -68,12 +69,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${familjenGrotesk.variable} ${instrumentSerif.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Analytics />
-        <Suspense>
-          <Footer />
-        </Suspense>
+        <TooltipProvider>
+          <Header />
+          {children}
+          <Analytics />
+          <Suspense>
+            <Footer />
+          </Suspense>
+        </TooltipProvider>
       </body>
     </html>
   )
