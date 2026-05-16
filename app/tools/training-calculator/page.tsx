@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     'Enter your race time for any distance and get personalized training paces — easy, threshold, interval and rep paces — based on the Jack Daniels VDOT system.',
 }
 
-export default function TrainingCalculatorPage() {
+export default function TrainingCalculatorToolsPage() {
   return (
     <main className="pt-40 pb-16 sm:pt-48 sm:pb-20">
       <Container>

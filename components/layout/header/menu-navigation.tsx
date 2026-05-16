@@ -1,20 +1,20 @@
-import Link from "next/link";
+import Link from 'next/link'
 import { useState } from 'react'
-import { getMenuLinks, calculators } from "@/lib/menu";
+import { getMenuLinks, tools } from '@/lib/menu'
 
 interface MenuContentProps {
-  onClose: () => void;
+  onClose: () => void
 }
 
 interface MenuLinkProps {
-  href: string;
-  label: string;
+  href: string
+  label: string
 
-  onClose: () => void;
+  onClose: () => void
 }
 
 export function MenuNavigation({ onClose }: MenuContentProps) {
-  const menuLinks = getMenuLinks();
+  const menuLinks = getMenuLinks()
   const [toolsOpen, setToolsOpen] = useState(false)
   return (
     <nav className="flex h-full flex-col mt-[66px] gap-4 w-full">
@@ -23,15 +23,10 @@ export function MenuNavigation({ onClose }: MenuContentProps) {
       {menuLinks
         .filter((link) => link.visible !== false)
         .map((item) => (
-          <MenuLink
-            href={item.href}
-            label={item.label}
-            onClose={onClose}
-            key={item.href}
-          />
+          <MenuLink href={item.href} label={item.label} onClose={onClose} key={item.href} />
         ))}
 
-      {/* Calculators grouped under a single dropdown */}
+      {/* Tools grouped under a single dropdown */}
       <div>
         <button
           onClick={() => setToolsOpen((s) => !s)}
@@ -40,12 +35,12 @@ export function MenuNavigation({ onClose }: MenuContentProps) {
         >
           {/* default text */}
           <span className="block translate-y-0 opacity-75 transition-all duration-500 ease-in-out group-hover:-translate-y-full group-hover:opacity-0">
-            Calculators
+            Tools
           </span>
 
           {/* hover text */}
           <span className="absolute left-0 top-full block translate-y-0 text-white transition-all duration-500 ease-in-out group-hover:-translate-y-full">
-            Calculators
+            Tools
           </span>
 
           <span className={`ml-3 transition-transform ${toolsOpen ? 'rotate-180' : 'rotate-0'}`}>
@@ -55,14 +50,14 @@ export function MenuNavigation({ onClose }: MenuContentProps) {
 
         {toolsOpen && (
           <div className="mt-3 flex flex-col pl-4 gap-3">
-            {calculators.map((c) => (
+            {tools.map((c) => (
               <MenuLink key={c.href} href={c.href} label={c.label} onClose={onClose} />
             ))}
           </div>
         )}
       </div>
     </nav>
-  );
+  )
 }
 
 function MenuLink({ href, label, onClose }: MenuLinkProps) {
@@ -83,5 +78,5 @@ function MenuLink({ href, label, onClose }: MenuLinkProps) {
         {label}
       </span>
     </Link>
-  );
+  )
 }

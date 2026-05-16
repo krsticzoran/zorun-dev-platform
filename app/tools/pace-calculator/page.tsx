@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     'Enter your race time for any distance from 1500m to the marathon and get equivalent times for all other distances based on the Jack Daniels VDOT table.',
 }
 
-export default function PaceCalculatorPage() {
+export default function PaceCalculatorToolsPage() {
   return (
     <main className="pt-40 pb-16 sm:pt-48 sm:pb-20">
       <Container>
