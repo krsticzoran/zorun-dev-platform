@@ -24,7 +24,7 @@ export function CategoryCard({
 
   return (
     <Link
-      href={`/${post.category}/${post.slug}`}
+      href={`/blog/${post.category}/${post.slug}`}
       className={`${bgColor} p-1 flex flex-col ${isFeatured ? 'xl:flex-row gap-6' : ''}`}
     >
       <div

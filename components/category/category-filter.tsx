@@ -64,7 +64,7 @@ export async function CategoryFilter({
         {tags.map((tagValue) => (
           <Link
             key={tagValue}
-            href={`/${category}?tag=${tagValue}`}
+            href={`/blog/${category}?tag=${tagValue}`}
             scroll={false}
             className={`px-3 py-1 rounded font-semibold transition-colors ${
               activeTag === tagValue

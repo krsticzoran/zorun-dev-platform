@@ -8,7 +8,7 @@ export type MenuLink = {
 
 export function getMenuLinks(): MenuLink[] {
   const categories = Object.entries(categoriesData).map(([slug, category]) => ({
-    href: `/${slug}`,
+    href: `/blog/${slug}`,
     label: category.title,
     visible: category?.visible ?? true,
   }))

@@ -1,45 +1,41 @@
 import { posts } from '#site/content'
+
 import { notFound } from 'next/navigation'
 import { categoriesData } from '@/lib/categories'
-import { POSTS_PER_PAGE, SITE_URL } from '@/lib/constants'
+import { POSTS_PER_PAGE } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
 import { CategoryPageLayout } from '@/components/category/category-page-layout'
 
 interface CategoryPageProps {
-  params: Promise<{ category: string; page: string }>
+  params: Promise<{ category: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function generateStaticParams() {
-  const pages: { category: string; page: string }[] = []
-
-  Object.keys(categoriesData).forEach((category) => {
-    const categoryPosts = posts.filter((post) => post.category === category)
-    const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE)
-
-    for (let i = 2; i <= totalPages; i++) {
-      pages.push({ category, page: i.toString() })
-    }
-  })
-
-  return pages
+  return Object.keys(categoriesData).map((category) => ({
+    category,
+  }))
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
-  const { category, page } = await params
+  const { category } = await params
 
   const categoryMeta = categoriesData[category]
-  if (!categoryMeta) notFound()
+
+  if (!categoryMeta) {
+    notFound()
+  }
 
   return {
-    title: `Zorun - ${categoryMeta.title} - page ${page}`,
+    title: `Zorun  - ${categoryMeta.title}`,
     description: categoryMeta.description,
     alternates: {
-      canonical: `${SITE_URL}/${category}/page/${page}`,
+      canonical: `${SITE_URL}/blog/${category}`,
     },
     openGraph: {
-      title: `Zorun - ${categoryMeta.title} - page ${page}`,
+      title: `Zorun  - ${categoryMeta.title}`,
       description: categoryMeta.description,
-      url: `${SITE_URL}/${category}/page/${page}`,
+      url: `${SITE_URL}/blog/${category}`,
       type: 'website',
       images: [
         {
@@ -54,30 +50,27 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
-  const { category, page } = await params
+  const { category } = await params
 
   const categoryMeta = categoriesData[category]
-  if (!categoryMeta) notFound()
+
+  if (!categoryMeta) {
+    notFound()
+  }
 
   const categoryPosts = posts
     .filter((post) => post.category === category)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-  if (!categoryPosts.length) notFound()
+  if (!categoryPosts.length) {
+    notFound()
+  }
+  const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE)
 
-  const currentPage = Number(page)
-  if (currentPage < 1) notFound()
-
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE
-  const endIndex = startIndex + POSTS_PER_PAGE
-  const paginatedPosts = categoryPosts.slice(startIndex, endIndex)
-
-  if (!paginatedPosts.length) notFound()
+  const paginatedPosts = categoryPosts.slice(0, POSTS_PER_PAGE)
 
   const featuredPost = paginatedPosts[0]
   const gridPosts = paginatedPosts.slice(1)
-
-  const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE)
 
   return (
     <CategoryPageLayout
@@ -85,7 +78,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       featuredPost={featuredPost}
       gridPosts={gridPosts}
       category={category}
-      currentPage={currentPage}
+      currentPage={1}
       totalPages={totalPages}
       categoryPosts={categoryPosts}
       searchParams={searchParams}

@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PostPageProps) {
 
   if (!post) return {}
 
-  const url = `${SITE_URL}/${category}/${slug}`
+  const url = `${SITE_URL}/blog/${category}/${slug}`
 
   return {
     title: `Zorun – ${post.title}`,
@@ -99,7 +99,7 @@ export default async function PostPage({ params }: PostPageProps) {
             }`}
           />
           <Container className="pt-16 sm:pt-20 xl:pt-24">
-            <Link href={`/${post.category}`} className="inline-block">
+            <Link href={`/blog/${post.category}`} className="inline-block">
               <p className="text-sm !text-custom-accent font-semibold mb-2 uppercase">
                 {post.category.replace(/-/g, ' ')}
               </p>

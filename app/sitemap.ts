@@ -5,14 +5,14 @@ import { SITE_URL } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const categoryUrls = Object.keys(categoriesData).map((category) => ({
-    url: `${SITE_URL}/${category}`,
+    url: `${SITE_URL}/blog/${category}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
 
   const postUrls = posts.map((post) => ({
-    url: `${SITE_URL}/${post.category}/${post.slug}`,
+    url: `${SITE_URL}/blog/${post.category}/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'weekly' as const,
     priority: 0.7,

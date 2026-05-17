@@ -10,7 +10,7 @@ interface HomeCardProps {
 export default function HomeCard({ post, priority = false }: HomeCardProps) {
   return (
     <Link
-      href={`/${post.category}/${post.slug}`}
+      href={`/blog/${post.category}/${post.slug}`}
       className="relative h-60 overflow-hidden p-1 bg-[#1b1b1b]"
     >
       <Image
