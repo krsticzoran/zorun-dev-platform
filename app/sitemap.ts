@@ -18,6 +18,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const toolsUrls = [
+    {
+      url: `${SITE_URL}/tools/pace-calculator`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${SITE_URL}/tools/training-calculator`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+  ]
+
   return [
     {
       url: SITE_URL,
@@ -25,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily' as const,
       priority: 1,
     },
+    ...toolsUrls,
     ...categoryUrls,
     ...postUrls,
   ]
